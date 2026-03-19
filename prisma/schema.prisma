@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id        String @id @default(uuid())
+  clerkId   String @unique   // from Clerk
+  firstName String
+  lastName String
+  email     String?
+  roleId    String
+  role      Role @relation(fields: [roleId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Role {
+  id    String @id @default(uuid())
+  name  String @unique  // "admin", "editor"
+
+  users User[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Service {
+  id        String @id @default(uuid())
+  title     String   // Sunday Service, Youth Service
+  dayOfWeek Int      // 0 = Sunday, 1 = Monday...
+  time      String   // "09:00 - 11:00"
+  location  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  date        DateTime   // main thing you wanted ✔️
+  location    String?
+  isFeatured  Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
