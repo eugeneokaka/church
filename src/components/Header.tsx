@@ -42,7 +42,7 @@ export function Header() {
       </nav>
       <div className="flex gap-4 items-center">
         {isSignedIn ? (
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         ) : (
           <Link href="/sign-in" className="text-sm font-semibold hover:text-gray-300 transition-colors drop-shadow-md">
             Sign In
