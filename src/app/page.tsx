@@ -4,24 +4,46 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
-        <div className="relative z-10 text-center text-black p-6 max-w-5xl mx-auto flex flex-col items-center mt-16">
-          <span className="uppercase tracking-[0.2em] font-medium text-sm md:text-base mb-6 border border-black/20 px-4 py-1.5 rounded-full inline-block">
-            African Gospel Church
-          </span>
-          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-6">
-            Welcome to <br /> AGC Keringet
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image src="/three.jpeg" alt="Church Interior" fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div className="relative z-10 text-center text-white p-6 max-w-5xl mx-auto flex flex-col items-center mt-16">
+          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4 drop-shadow-lg">
+            Helping You Grow Your Faith
           </h1>
-          <p className="text-xl md:text-2xl font-light mb-12 max-w-3xl text-black">
-            A vibrant community of believers in Nakuru dedicated to faith, hope, and love. There is a place for you here.
+          <p className="text-sm md:text-lg font-light mb-10 text-gray-200 tracking-wide">
+            AGC Keringet | Sundays @ 8:30am & 10:30am
           </p>
-          <div className="flex flex-col sm:flex-row gap-6">
-            <a href="#services" className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-zinc-800 transition-all transform hover:scale-105 shadow-xl">
-              Service Times
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href="#services" className="bg-white/20 border-2 border-white px-8 py-3 font-semibold text-sm tracking-wide uppercase text-white hover:bg-white hover:text-black transition-all">
+              NEW HERE?
             </a>
-            <a href="/about" className="bg-transparent border-2 border-black/80 px-8 py-4 rounded-full font-bold text-lg text-black hover:bg-black hover:text-white transition-all shadow-xl">
-              Who We Are
-            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Two Column Info Section */}
+      <section className="flex flex-col md:flex-row w-full">
+        {/* Sunday Services */}
+        <div className="md:w-1/2 bg-white flex justify-center py-20 px-8 md:px-16 text-center">
+          <div className="max-w-md">
+            <h2 className="text-3xl font-light text-gray-800 mb-6">Sunday Services</h2>
+            <p className="text-gray-500 font-light leading-relaxed">
+              Join us every Sunday for a time of uplifting worship, grounded biblical teaching, and genuine community. We offer an English service at 8:30 AM and a Swahili service at 10:30 AM. Come just as you are and grow with us.
+            </p>
+          </div>
+        </div>
+        {/* About Us */}
+        <div className="md:w-1/2 bg-[#89adc0] flex justify-center py-20 px-8 md:px-16 text-center text-white">
+          <div className="max-w-md">
+            <h2 className="text-3xl font-light mb-6">About Us</h2>
+            <p className="text-white/90 font-light leading-relaxed">
+              We are African Gospel Church Keringet, a family of believers located in Nakuru, Kenya. Our mission is to spread the love of Christ and serve our community. We are passionate about growing deeper in faith and walking together through all seasons of life.
+            </p>
           </div>
         </div>
       </section>
