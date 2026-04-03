@@ -118,8 +118,10 @@ export default function EventsPage() {
                 
                 {/* Date Badge */}
                 <div className="flex-shrink-0 bg-black text-white rounded-2xl w-24 h-24 flex flex-col items-center justify-center shadow-md">
-                  <span className="text-sm font-semibold uppercase tracking-widest">{event.date.toLocaleDateString('en-US', { month: 'short' })}</span>
-                  <span className="text-4xl font-extrabold">{event.date.getDate()}</span>
+                  <span className="text-sm font-semibold uppercase tracking-widest">
+                    {event.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}
+                  </span>
+                  <span className="text-4xl font-extrabold">{event.date.getUTCDate()}</span>
                 </div>
                 
                 {/* Event Details */}
@@ -142,7 +144,7 @@ export default function EventsPage() {
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm font-medium text-gray-500 mt-6 pt-6 border-t border-gray-100">
                     <div className="flex items-center gap-2">
                        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                       {event.date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+                       {event.date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' })}
                     </div>
                     {event.location && (
                       <div className="flex items-center gap-2">
