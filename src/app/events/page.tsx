@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface Event {
   id: string;
@@ -11,11 +12,38 @@ interface Event {
   isFeatured: boolean;
 }
 
+interface User {
+  id: string;
+  clerkId: string;
+  firstName: string;
+  lastName: string;
+  email?: string;
+  role?: {
+    name: string;
+  };
+}
+
 export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("/api/user");
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setUserLoading(false);
+      }
+    };
+
     const fetchEvents = async () => {
       try {
         const response = await fetch("/api/events");
@@ -33,10 +61,13 @@ export default function EventsPage() {
       }
     };
 
+    fetchUserData();
     fetchEvents();
   }, []);
 
-  if (loading) {
+  const canEdit = user?.role?.name === "admin" || user?.role?.name === "secretary";
+
+  if (loading || userLoading) {
     return (
       <main className="min-h-screen pt-24 bg-zinc-50">
         <div className="py-24 px-6 text-center">
@@ -60,6 +91,16 @@ export default function EventsPage() {
           <p className="text-xl md:text-2xl text-gray-500 font-light max-w-2xl mx-auto">
             Stay plugged into the life of AGC Keringet. Join us for worship, fellowship, and community impact.
           </p>
+          {canEdit && (
+            <div className="mt-6">
+              <Link 
+                href="/admin/events/new"
+                className="inline-block bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-zinc-800 transition-colors"
+              >
+                Create New Event
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -107,6 +148,17 @@ export default function EventsPage() {
                       <div className="flex items-center gap-2">
                         <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         {event.location}
+                      </div>
+                    )}
+                    {canEdit && (
+                      <div className="flex items-center gap-2">
+                        <Link 
+                          href={`/admin/events/${event.id}/edit`}
+                          className="text-black hover:text-zinc-600 font-medium flex items-center gap-2"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                          Edit Event
+                        </Link>
                       </div>
                     )}
                   </div>
