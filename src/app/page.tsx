@@ -48,39 +48,91 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mission, Vision, Values Grid */}
+      {/* Our Vision, Mission, Core Values & Strategies */}
       <section className="py-24 px-6 bg-zinc-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
-            <div className="bg-white p-10 rounded-3xl shadow-lg border border-zinc-100 hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md md:mx-0 mx-auto">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          {/* Vision Section */}
+          <div className="text-center mb-16">
+            <div className="bg-white p-12 rounded-3xl shadow-lg border border-zinc-100">
+              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md mx-auto">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-              <p className="text-black leading-relaxed font-light">
-                To preach the gospel of Jesus Christ, make disciples of all nations, and cultivate a community that lives out biblical principles in Keringet and beyond.
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Vision</h2>
+              <p className="text-xl md:text-2xl text-black leading-relaxed font-light mb-4">
+                The Whole Church taking the Whole Gospel to the Whole World.
+              </p>
+              <p className="text-lg text-gray-600 italic font-light">
+                (Swahili: KANISA LOTE, likieneza INJILI YOTE, ULIMWENGUNI KOTE)
               </p>
             </div>
-            <div className="bg-white p-10 rounded-3xl shadow-lg border border-zinc-100 hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md md:mx-0 mx-auto">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+          </div>
+
+          {/* Mission Section */}
+          <div className="text-center mb-16">
+            <div className="bg-white p-12 rounded-3xl shadow-lg border border-zinc-100">
+              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md mx-auto">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-              <p className="text-black leading-relaxed font-light">
-                To be a vibrant, Christ-centered church that transforms families, empowers leaders, and positively impacts society for the glory of God.
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Mission</h2>
+              <p className="text-lg text-black leading-relaxed font-light mb-8">
+                The purpose of the Africa Gospel Church is to fulfill the Great Commandment and Great Commission of the Lord Jesus Christ according to the Great Plan.
               </p>
+              <div className="grid md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
+                <div className="bg-zinc-50 p-6 rounded-xl">
+                  <h3 className="font-bold text-lg mb-3">The Great Commandment</h3>
+                  <p className="text-sm text-gray-600">Embodies Loving God (Spiritual Development) and Man (Social Development).</p>
+                </div>
+                <div className="bg-zinc-50 p-6 rounded-xl">
+                  <h3 className="font-bold text-lg mb-3">The Great Commission</h3>
+                  <p className="text-sm text-gray-600">Informs the need for (Intentional Discipleship) structure and programs.</p>
+                </div>
+                <div className="bg-zinc-50 p-6 rounded-xl">
+                  <h3 className="font-bold text-lg mb-3">The Great Plan</h3>
+                  <p className="text-sm text-gray-600">(Dynamic Evangelism) defines the extent of our mission... not just local, but to also make an impact on our families, communities, nations and the world.</p>
+                </div>
+              </div>
             </div>
-            <div className="bg-white p-10 rounded-3xl shadow-lg border border-zinc-100 hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md md:mx-0 mx-auto">
+          </div>
+
+          {/* Core Values & Strategies Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Core Values */}
+            <div className="bg-white p-10 rounded-3xl shadow-lg border border-zinc-100">
+              <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Core Values</h3>
+              <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
+              <p className="text-gray-600 mb-6 font-light text-sm">
+                The following are the "Guiding Principles" that direct our decision making as a church:
+              </p>
               <ul className="text-black space-y-2 font-light text-left pl-4 list-disc marker:text-black">
-                <li>Biblical Integrity</li>
-                <li>Fervent Prayer</li>
-                <li>Authentic Worship</li>
-                <li>Compassionate Love</li>
-                <li>Excellence in Ministry</li>
+                <li>Accountability</li>
+                <li>Biblical Authority</li>
+                <li>Commitment</li>
+                <li>Diversity</li>
+                <li>Excellence</li>
+                <li>Faith Family</li>
+                <li>Fellowship</li>
+                <li>Holiness</li>
+                <li>Servanthood</li>
+              </ul>
+            </div>
+
+            {/* Strategies */}
+            <div className="bg-white p-10 rounded-3xl shadow-lg border border-zinc-100">
+              <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6 shadow-md">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Our Strategies</h3>
+              <p className="text-gray-600 mb-6 font-light text-sm">
+                In order to fulfill our mission and God-directed vision, we will pursue the following strategies:
+              </p>
+              <ul className="text-black space-y-3 font-light text-left pl-4 list-disc marker:text-black">
+                <li><strong>E1:</strong> Evangelizing the Unsaved</li>
+                <li><strong>E2:</strong> Establishing Dynamic Churches</li>
+                <li><strong>E3:</strong> Edifying Believers</li>
+                <li><strong>E4:</strong> Equipping Leaders</li>
+                <li><strong>E5:</strong> Exercising Compassion</li>
               </ul>
             </div>
           </div>

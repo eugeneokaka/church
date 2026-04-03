@@ -2,6 +2,39 @@ import { currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+// GET endpoint to fetch events
+export async function GET() {
+  try {
+    const events = await prisma.event.findMany({
+      where: {
+        date: {
+          gte: new Date(), // Only show upcoming events
+        },
+      },
+      orderBy: {
+        date: "asc",
+      },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        date: true,
+        location: true,
+        isFeatured: true,
+      },
+    });
+    console.log(events);
+
+    return NextResponse.json(events);
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch events" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(request: Request) {
   const user = await currentUser();
 

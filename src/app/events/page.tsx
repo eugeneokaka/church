@@ -1,16 +1,53 @@
-import { prisma } from "@/lib/prisma";
+"use client";
 
-export default async function EventsPage() {
-  const events = await prisma.event.findMany({
-    where: {
-      date: {
-        gte: new Date(), // Only show upcoming events
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  });
+import { useEffect, useState } from "react";
+
+interface Event {
+  id: string;
+  title: string;
+  description: string | null;
+  date: Date;
+  location: string | null;
+  isFeatured: boolean;
+}
+
+export default function EventsPage() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch("/api/events");
+        if (response.ok) {
+          const data = await response.json();
+          setEvents(data.map((event: any) => ({
+            ...event,
+            date: new Date(event.date)
+          })));
+        }
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen pt-24 bg-zinc-50">
+        <div className="py-24 px-6 text-center">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-64 mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-96 mx-auto"></div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen pt-24 bg-zinc-50">
